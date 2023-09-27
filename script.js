@@ -18,7 +18,24 @@ function generatePassword() {
     var specialCharString = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
     
     if (!uppercaseValue && !lowercaseValue && !numericalValue && !specialCharValue) alert("You must choose at least one password parameter.")
+
+    var parameterString = ""
+    var passArr = []
+
+    if (uppercaseValue) parameterString = parameterString.concat(uppercaseString)
+    if (lowercaseValue) parameterString = parameterString.concat(lowercaseString)
+    if (numericalValue) parameterString = parameterString.concat(numberString)
+    if (specialCharValue) parameterString = parameterString.concat(specialCharString)
+  
+    for(var i = 0; i < passLength; i++) {
+      passArr.push(parameterString[Math.floor(Math.random() * passLength)])
+    }
+
+    console.log(passArr);
+
   }
+
+
 }
 // Write password to the #password input
 function writePassword() {
