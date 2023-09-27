@@ -6,6 +6,12 @@ function generatePassword() {
 
   if(passLength < 8 || passLength > 128) alert("Password must be in between 8 and 128 characters");
   else if(isNaN(passLength)) alert("Please enter a number") /* Checks to see if the passLength response is in fact a number and not a letter */ 
+  else {
+    var uppercaseValue = confirm("Do you want Uppercase letters?");
+    var lowercaseValue = confirm("Do you want lowercase letters?");
+    var numericalValue = confirm("Do you want numbers included?");
+    var specialCharValue = confirm("Do you want special characters included");
+  }
 }
 // Write password to the #password input
 function writePassword() {
