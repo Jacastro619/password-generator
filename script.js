@@ -1,6 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+function generatePassword() {
+  var passLength = prompt("How many characters do you want your password to have?")
+
+  if(passLength < 8 || passLength > 128) alert("Password must be in between 8 and 128 characters");
+  else if(isNaN(passLength)) alert("Please enter a number") /* Checks to see if the passLength response is in fact a number and not a letter */ 
+}
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -16,6 +22,7 @@ generateBtn.addEventListener("click", writePassword);
 // Psuedocode
 // Declare generatePassword function
 // Prompt user with a question of how many characters are desired in password
+// If answer is not a number then it is in invalid response
 // If answer is under 8 character and over 128 characters then its an invalid response
 // Confirm whether user wants uppercase letters in password
 // Confirm whether user wants lowercase letters in password
@@ -34,7 +41,3 @@ generateBtn.addEventListener("click", writePassword);
 // Once loop is completed create a string from the array
 // Return password string
 
-
-
-
-console.log(Math.floor(Math.random() * 10/*charactersValue*/))
