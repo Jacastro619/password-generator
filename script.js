@@ -2,40 +2,51 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
-  var passLength = prompt("How many characters do you want your password to have?")
+  var passLength = prompt("How many characters do you want your password to have?");
 
-  if(passLength < 8 || passLength > 128) alert("Password must be in between 8 and 128 characters");
-  else if(isNaN(passLength)) alert("Please enter a number") /* Checks to see if the passLength response is in fact a number and not a letter */ 
+  if (passLength < 8 || passLength > 128) {
+    alert("Password must be in between 8 and 128 characters");
+  }
+  else if (isNaN(passLength)) alert("Please enter a number");/* Checks to see if the passLength response is in fact a number and not a letter */ 
   else {
     var uppercaseValue = confirm("Do you want Uppercase letters?");
     var lowercaseValue = confirm("Do you want lowercase letters?");
     var numericalValue = confirm("Do you want numbers included?");
     var specialCharValue = confirm("Do you want special characters included");
-    
-    var uppercaseString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    var lowercaseString = "abcdefjhijklmnopqrstuvwxyz"
-    var numberString = "0123456789"
-    var specialCharString = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-    
-    if (!uppercaseValue && !lowercaseValue && !numericalValue && !specialCharValue) alert("You must choose at least one password parameter.")
 
-    var parameterString = ""
-    var passArr = []
+    var uppercaseString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var lowercaseString = "abcdefjhijklmnopqrstuvwxyz";
+    var numberString = "0123456789";
+    var specialCharString = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-    if (uppercaseValue) parameterString = parameterString.concat(uppercaseString)
-    if (lowercaseValue) parameterString = parameterString.concat(lowercaseString)
-    if (numericalValue) parameterString = parameterString.concat(numberString)
-    if (specialCharValue) parameterString = parameterString.concat(specialCharString)
-  
-    for(var i = 0; i < passLength; i++) {
-      passArr.push(parameterString[Math.floor(Math.random() * passLength)])
+    if (!uppercaseValue && !lowercaseValue && !numericalValue && !specialCharValue) {
+      alert("You must choose at least one password parameter.")
     }
 
-    console.log(passArr);
+    var parameterString = "";
+    var passArr = [];
 
+    if (uppercaseValue) {
+      parameterString = parameterString.concat(uppercaseString);
+    }
+    if (lowercaseValue) {
+      parameterString = parameterString.concat(lowercaseString);
+    }
+    if (numericalValue) {
+      parameterString = parameterString.concat(numberString);
+    }
+    if (specialCharValue) {
+      parameterString = parameterString.concat(specialCharString);
+    }
+
+    for (var i = 0; i < passLength; i++) {
+      passArr.push(parameterString[Math.floor(Math.random() * parameterString.length)]);
+    }
+
+    password = passArr.join("");
+
+    return password;
   }
-
-
 }
 // Write password to the #password input
 function writePassword() {
@@ -43,7 +54,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
@@ -64,10 +74,9 @@ generateBtn.addEventListener("click", writePassword);
 // Store lowercase letters in a variable --
 // Store numbers in a variable --
 // Store special characters in a variable --
-// Declare an empty array
-// Combined predefined values that can be in password in a string
-// Create a for loop with character amount as the number of iterations the loop will execute
-// In the loop push the string[random index] into empty array
-// Once loop is completed create a string from the array
-// Return password string
-
+// Declare an empty array --
+// Combined predefined values that can be in password in a string --
+// Create a for loop with character amount as the number of iterations the loop will execute --
+// In the loop push the string[random index] into empty array --
+// Once loop is completed create a string from the array --
+// Return password string --
