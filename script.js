@@ -2,13 +2,20 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
-  var passLength = prompt("How many characters do you want your password to have?");
+  var passLength = prompt(
+    "How many characters do you want your password to have?"
+  );
 
   if (passLength < 8 || passLength > 128) {
     alert("Password must be in between 8 and 128 characters");
-  }
-  else if (isNaN(passLength)) alert("Please enter a number");/* Checks to see if the passLength response is in fact a number and not a letter */ 
-  else {
+    password = document.querySelector("placeholder");
+    return password;
+  } else if (isNaN(passLength)) {
+    alert("Please enter a number");
+    password = document.querySelector("placeholder");
+    return password;
+  } else {
+    /* Checks to see if the passLength response is in fact a number and not a letter */
     var uppercaseValue = confirm("Do you want Uppercase letters?");
     var lowercaseValue = confirm("Do you want lowercase letters?");
     var numericalValue = confirm("Do you want numbers included?");
@@ -19,8 +26,13 @@ function generatePassword() {
     var numberString = "0123456789";
     var specialCharString = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-    if (!uppercaseValue && !lowercaseValue && !numericalValue && !specialCharValue) {
-      alert("You must choose at least one password parameter.")
+    if (
+      !uppercaseValue &&
+      !lowercaseValue &&
+      !numericalValue &&
+      !specialCharValue
+    ) {
+      alert("You must choose at least one password parameter.");
     }
 
     var parameterString = "";
@@ -40,7 +52,9 @@ function generatePassword() {
     }
 
     for (var i = 0; i < passLength; i++) {
-      passArr.push(parameterString[Math.floor(Math.random() * parameterString.length)]);
+      passArr.push(
+        parameterString[Math.floor(Math.random() * parameterString.length)]
+      );
     }
 
     password = passArr.join("");
